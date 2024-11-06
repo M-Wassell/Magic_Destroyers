@@ -1,4 +1,4 @@
-﻿using MagicDestroyers.Characters.Melee;
+﻿using Melee;
 using Sharp;
 using Common;
 
@@ -6,6 +6,7 @@ using Common;
 
 using System;
 using System.Collections.Generic;
+using Enumerations;
 
 
 namespace MagicDestroyers
@@ -15,9 +16,10 @@ namespace MagicDestroyers
         
         static void Main()
         {
-            //Fields fields = new Fields("Jamie", "Wieners");
+            Fields fields = new Fields("Jamie", Faction.Spellcaster);
+            Console.WriteLine(((int)fields.Health)+ "\n");
 
-            Warrior warrior = new Warrior("Mike", "Big Balls", 500, "Excalibre", 100, 4, 5);
+            Warrior warrior = new Warrior("Mike", Faction.Melee, 500, "Excalibre", 100, 4, 5);
 
             Sword sword = new Sword("Bob", 300);
 

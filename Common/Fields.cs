@@ -1,11 +1,17 @@
-﻿using System;
+﻿using Enumerations;
+using System;
 
 namespace Common
 {
     public class Fields
     {
-        private string name, faction;
-        private int health, level, abilityPoints;
+        private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
+
+        private Faction faction;
+        private HitPoints health;
+        private string name;
+        private int level, abilityPoints;
+
 
         public string Name 
         {
@@ -18,7 +24,7 @@ namespace Common
                 this.name = value;
             } 
         }
-        public string Faction
+        public Faction Faction
         {
             get
             {
@@ -29,7 +35,7 @@ namespace Common
                 this.faction = value;
             }
         }
-        public int Health
+        public HitPoints Health
         {
             get
             {
@@ -65,15 +71,15 @@ namespace Common
 
 
         public Fields()
-            :this("Megan", "Sub Human"){}
+            :this("Megan", Faction.Default){}
 
-        public Fields(string name, string faction)
-            : this("Michael", "Human", 100, 10, 20){}
-        public Fields(string name, string faction, int health, int level, int abilityPoints) 
+        public Fields(string name, Faction faction)
+            : this("Michael", Faction.Default, HitPoints.Health, 10, 20){}
+        public Fields(string name, Faction faction, HitPoints hitPoints, int level, int abilityPoints) 
         {
             this.Name = name;
-            this.Faction = faction;
-            this.Health = health;
+            this.Faction = Faction;
+            this.Health = DEFAULT_HIT_POINTS;
             this.Level = level;
             this.AbilityPoints = abilityPoints;
         }
@@ -83,8 +89,8 @@ namespace Common
             Console.WriteLine(
                 $"--------Character------\n" +
                 $"Character Name: {this.Name}\n" +
-                $"Character Faction: {this.Faction}\n" +
-                $"Character Health: {this.Health}\n" +
+                $"Character Faction: {Faction.Default}\n" +
+                $"Character Health: {HitPoints.Health}\n" +
                 $"Character Level: {this.Level}\n" +
                 $"Character Ability Points {this.AbilityPoints}\n"+
                 $"--------Character------\n");

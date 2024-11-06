@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Fields.cs" />
+    <Compile Include="Enumerations\Faction.cs" />
+    <Compile Include="Enumerations\HitPoints.cs" />
     <Compile Include="Weapons\Blunt\Hammer.cs" />
     <Compile Include="Weapons\Blunt\MagicStaff.cs" />
     <Compile Include="Weapons\Sharp\Axe.cs" />

@@ -31,6 +31,8 @@ namespace Sharp
             } 
         }
 
+        public Sword()
+            :this("Player1", 10){}
         public Sword(string swordName, int damage)
         {
             this.Damage = damage;

@@ -1,15 +1,30 @@
 ﻿using Common;
+using Enumerations;
 using Sharp;
 using System;
+using System.Runtime.ExceptionServices;
 
 namespace Melee
 {
     public class Warrior
     {
+        private readonly Faction DEFAULT_FACTION = Faction.Melee;
+        private readonly Sword DEFAULT_SWORD_WEAPON = new Sword();
+        private readonly Fields DEFAULT_FIELDS = new Fields();
+        private const int DEFAULT_STRIKE_DAMAGE = 50;
+        private const int DEFAULT_SKIN_HARDEN = 60;
+        private const int DEFAULT_EXICUTIONER_DAMAGE = 70;
+
         private int strikeDamageOffensive, skinHardenDefensive, executionerDamageOffensive;
         private Sword swordWeapon;
         private Fields genericFields;
+        private Faction faction;
 
+        public Faction Faction 
+        {
+            get { return this.faction; }
+            set { this.faction = value; }
+        }
         public int StrikeDamageOffensive
         {
             get
@@ -75,23 +90,26 @@ namespace Melee
         }
 
         public Warrior()
-            :this(10, 50){}
+            :this(DEFAULT_STRIKE_DAMAGE, DEFAULT_SKIN_HARDEN, Faction.Default){}
 
-        public Warrior(int strikeDamageOffensive, int skinHardenDefensive)
-            :this("Jamie", "Sub Human", 5000, "The Brown", 1000, 50, 80){}
-        public Warrior(string name, string faction, int damage, string swordName, int health, int level, int abilityPoints)
+        public Warrior(int strikeDamageOffensive, int skinHardenDefensive, Faction faction)
+            : this("Jamie", Faction.Default, 5000, "The Brown", 1000, 50, 80)
+        {
+            Faction = faction;
+        }
+        public Warrior(string name, Faction faction, int damage, string swordName, int health, int level, int abilityPoints)
         {
             this.SwordWeapons = new Sword(swordName, damage);
-            this.GenericFields = new Fields(name, faction, health, level, abilityPoints);
-            this.StrikeDamageOffensive = strikeDamageOffensive;
-            this.ExecutionerDamageOffensive = executionerDamageOffensive;
-            this.SkinHardenDefensive = skinHardenDefensive;
+            this.GenericFields = new Fields();
+            this.StrikeDamageOffensive = DEFAULT_STRIKE_DAMAGE;
+            this.ExecutionerDamageOffensive = DEFAULT_EXICUTIONER_DAMAGE;
+            this.SkinHardenDefensive = DEFAULT_SKIN_HARDEN;
         }
 
         public void Greeting()
         {
             Console.WriteLine($"Hi from: {this.GenericFields.Name}," +
-                              $" My Faction is: {this.GenericFields.Faction}");
+                              $" My Faction is: {Faction.Melee}");
         }
 
         public void SwordDamage(string damage, int swordName)

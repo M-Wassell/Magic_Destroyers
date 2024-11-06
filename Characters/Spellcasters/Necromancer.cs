@@ -1,10 +1,52 @@
 ﻿
+using Blunt;
+using Common;
+using Enumerations;
+using Sharp;
+
 namespace Spellcasters
 {
     internal class Necromancer
     {
-        private int shadowRageOffense, vampireTouchOffense, boneShieldDefense;
+        private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
+        private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
+        private readonly Fields DEFAULT_FIELDS = new Fields();
+        private const int DEFAULT_SHADOW_RAGE = 50;
+        private const int DEFAULT_VAMPIRE_TOUCH = 60;
+        private const int DEFAULT_BONE_SHIELD = 70;
 
+        private int shadowRageOffense, vampireTouchOffense, boneShieldDefense;
+        private Faction faction;
+        private Fields genericFields;
+        private MagicStaff magicStaffWeapon;
+
+        public Fields GenericFields
+        {
+            get
+            {
+                return this.genericFields;
+            }
+            set
+            {
+                this.genericFields = value;
+            }
+        }
+        public MagicStaff MagicStaffWeapon
+        {
+            get
+            {
+                return this.magicStaffWeapon;
+            }
+            set
+            {
+                this.magicStaffWeapon = value;
+            }
+        }
+        public Faction Faction
+        {
+            get { return this.faction; }
+            set { this.faction = value; }
+        }
         public int ShadowRageOffense
         {
             get
@@ -40,16 +82,16 @@ namespace Spellcasters
         }
 
         public Necromancer()
-            :this(2){}
+            :this(DEFAULT_SHADOW_RAGE) {}
 
         public Necromancer(int shadowRageOffense)
-            :this(20, 20, 50){}
+            :this(DEFAULT_SHADOW_RAGE, DEFAULT_VAMPIRE_TOUCH, DEFAULT_BONE_SHIELD) {}
 
         public Necromancer(int shadowRageOffense, int vampireTouchOffense, int boneShieldDefense) 
         {
-            this.ShadowRageOffense = shadowRageOffense;
-            this.VampireTouchOffense = vampireTouchOffense;
-            this.BoneShieldDefense = boneShieldDefense;
+            this.ShadowRageOffense = DEFAULT_SHADOW_RAGE;
+            this.VampireTouchOffense = DEFAULT_VAMPIRE_TOUCH;
+            this.BoneShieldDefense = DEFAULT_BONE_SHIELD;
         }
     }
 }

@@ -1,10 +1,51 @@
 ﻿
+using Blunt;
+using Common;
+using Enumerations;
+
 namespace Spellcasters
 {
     public class Mage
     {
-        private int arcaneWrathOffense, firewallOffense, meditationDeffensive;
+        private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
+        private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
+        private readonly Fields DEFAULT_FIELDS = new Fields();
+        private const int DEFAULT_ARCANE_WRATH = 50;
+        private const int DEFAULT_FIREWALL = 60;
+        private const int DEFAULT_MEDITATION = 70;
 
+        private int arcaneWrathOffense, firewallOffense, meditationDeffensive;
+        private Faction faction;
+        private MagicStaff magicStaffWeapon;
+        private Fields genericFields;
+
+        public Fields GenericFields
+        {
+            get
+            {
+                return this.genericFields;
+            }
+            set
+            {
+                this.genericFields = value;
+            }
+        }
+        public MagicStaff MagicStaffWeapon
+        {
+            get
+            {
+                return this.magicStaffWeapon;
+            }
+            set
+            {
+                this.magicStaffWeapon = value;
+            }
+        }
+        public Faction Faction
+        {
+            get { return this.faction; }
+            set { this.faction = value; }
+        }
         public int ArcaneWrathOffense
         {
             get
@@ -40,15 +81,15 @@ namespace Spellcasters
         }
 
         public Mage()
-            :this(0){}
+            :this(DEFAULT_ARCANE_WRATH) {}
 
         public Mage(int arcaneWrathOffense)
-            :this(60, 60, 70){}
+            :this(DEFAULT_ARCANE_WRATH, DEFAULT_FIREWALL, DEFAULT_MEDITATION) {}
         public Mage(int arcaneWrathOffense, int firewallOffense, int meditationDeffensive)
         {
-            this.ArcaneWrathOffense = arcaneWrathOffense;
-            this.FirewallOffense = firewallOffense;
-            this.MeditationDeffensive = meditationDeffensive;
+            this.ArcaneWrathOffense = DEFAULT_ARCANE_WRATH;
+            this.FirewallOffense = DEFAULT_FIREWALL;
+            this.MeditationDeffensive = DEFAULT_MEDITATION;
         }
 
     }

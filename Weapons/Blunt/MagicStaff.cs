@@ -31,6 +31,11 @@ namespace Blunt
             }
         }
 
+        public MagicStaff()
+            :this(1,"Player1")
+        {
+                
+        }
         public MagicStaff(int damage, string staffName)
         {
             this.Damage = damage;
