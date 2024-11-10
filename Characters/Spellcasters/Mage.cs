@@ -1,35 +1,43 @@
 ﻿
 using Blunt;
-using Common;
+
 using Enumerations;
 
 namespace Spellcasters
 {
     public class Mage
     {
+        private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
         private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
         private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
-        private readonly Fields DEFAULT_FIELDS = new Fields();
+        //private readonly Fields DEFAULT_FIELDS = new Fields();
         private const int DEFAULT_ARCANE_WRATH = 50;
         private const int DEFAULT_FIREWALL = 60;
         private const int DEFAULT_MEDITATION = 70;
 
         private int arcaneWrathOffense, firewallOffense, meditationDeffensive;
         private Faction faction;
+        private HitPoints hitPoints;
         private MagicStaff magicStaffWeapon;
-        private Fields genericFields;
 
-        public Fields GenericFields
+        public HitPoints HitPoints
         {
-            get
-            {
-                return this.genericFields;
-            }
-            set
-            {
-                this.genericFields = value;
-            }
+            get { return this.hitPoints; }
+            set { this.hitPoints = value; }
         }
+        //private Fields genericFields;
+
+        //public Fields GenericFields
+        //{
+        //    get
+        //    {
+        //        return this.genericFields;
+        //    }
+        //    set
+        //    {
+        //        this.genericFields = value;
+        //    }
+        //}
         public MagicStaff MagicStaffWeapon
         {
             get
@@ -87,6 +95,7 @@ namespace Spellcasters
             :this(DEFAULT_ARCANE_WRATH, DEFAULT_FIREWALL, DEFAULT_MEDITATION) {}
         public Mage(int arcaneWrathOffense, int firewallOffense, int meditationDeffensive)
         {
+            this.HitPoints = DEFAULT_HIT_POINTS;
             this.ArcaneWrathOffense = DEFAULT_ARCANE_WRATH;
             this.FirewallOffense = DEFAULT_FIREWALL;
             this.MeditationDeffensive = DEFAULT_MEDITATION;

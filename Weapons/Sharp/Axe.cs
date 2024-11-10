@@ -3,6 +3,9 @@ namespace Sharp
 {
     public class Axe
     {
+        private const int DEFAULT_AXE_DAMMAGE = 100;
+        private const string DEFAULT_AXE_NAME = "Power Axe";
+
         private int damage;
         private string axeName;
 
@@ -32,8 +35,8 @@ namespace Sharp
         }
         public Axe(int damage, string axeName) 
         { 
-            this.Damage = damage;
-            this.AxeName = axeName;
+            this.Damage = DEFAULT_AXE_DAMMAGE;
+            this.AxeName = DEFAULT_AXE_NAME;
         }
     }
 }

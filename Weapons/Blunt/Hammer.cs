@@ -3,6 +3,9 @@ namespace Blunt
 {
     public class Hammer
     {
+        private const int DEFAULT_HAMMER_DAMMAGE = 100;
+        private const string DEFAULT_HAMMER_NAME = "Power Hammer";
+
         private int damage;
         private string hammerName;
 
@@ -32,8 +35,8 @@ namespace Blunt
         }
         public Hammer(int damage, string hammerName)
         {
-            this.Damage = damage;
-            this.HammerName = hammerName;
+            this.Damage = DEFAULT_HAMMER_DAMMAGE;
+            this.HammerName = DEFAULT_HAMMER_NAME;
         }
     }
 }

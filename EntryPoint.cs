@@ -1,47 +1,47 @@
-﻿using Melee;
-using Sharp;
-using Common;
+﻿//using Melee;
+//using Sharp;
 
 
 
-using System;
-using System.Collections.Generic;
-using Enumerations;
+
+//using System;
+//using System.Collections.Generic;
+//using Enumerations;
 
 
-namespace MagicDestroyers
-{
-    internal class EntryPoint
-    {
+//namespace MagicDestroyers
+//{
+//    internal class EntryPoint
+//    {
         
-        static void Main()
-        {
-            Fields fields = new Fields("Jamie", Faction.Spellcaster);
-            Console.WriteLine(((int)fields.Health)+ "\n");
+//        static void Main()
+//        {
+//            //Fields fields = new Fields("Jamie", Faction.Spellcaster);
+//            //Console.WriteLine(((int)fields.Health)+ "\n");
 
-            Warrior warrior = new Warrior("Mike", Faction.Melee, 500, "Excalibre", 100, 4, 5);
+//            //Warrior warrior = new Warrior("Mike", Faction.Melee, 500, "Excalibre", 100, 4, 5);
 
-            Sword sword = new Sword("Bob", 300);
+//            Sword sword = new Sword("Bob", 300);
 
-            warrior.Greeting();
+//            //warrior.Greeting();
 
-            warrior.GenericFields.Character();
-            Console.WriteLine("^^^^^ Character() called");
+//            warrior.GenericFields.Character();
+//            Console.WriteLine("^^^^^ Character() called");
 
-            sword.SwordType1();
+//            sword.SwordType1();
 
-            Console.WriteLine("^^^^^ Acces Via Sword");
+//            Console.WriteLine("^^^^^ Acces Via Sword");
 
-            warrior.SwordWeapons.SwordType1();
+//            warrior.SwordWeapons.SwordType1();
 
-            Console.WriteLine("^^^^^ Acces Via Warrior");
+//            Console.WriteLine("^^^^^ Acces Via Warrior");
 
-            warrior.SwordDamage(warrior.SwordWeapons.SwordName, warrior.SwordWeapons.Damage);
+//            warrior.SwordDamage(warrior.SwordWeapons.SwordName, warrior.SwordWeapons.Damage);
 
             
 
-            Console.ReadLine();
+//            Console.ReadLine();
 
-        }
-    }
-}
+//        }
+//    }
+//}

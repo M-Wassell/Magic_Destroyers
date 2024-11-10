@@ -1,6 +1,6 @@
 ﻿
 using Blunt;
-using Common;
+
 using Enumerations;
 using System.Linq.Expressions;
 
@@ -8,28 +8,36 @@ namespace Spellcasters
 {
     public class Druid
     {
+        private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
         private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
         private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
-        private readonly Fields DEFAULT_FIELDS = new Fields();
+        //private readonly Fields DEFAULT_FIELDS = new Fields();
         private const int DEFAULT_MOON_FIRE = 50;
         private const int DEFAULT_STARBURST = 60;
         private const int DEFAULT_ONE_WITH_NATURE = 70;
 
         private int moonfireOffensive, starburstOffensive, oneWithTheNatureOffensive;
         private Faction faction;
+        private HitPoints hitPoints;
         private MagicStaff magicStaffWeapon;
-        private Fields genericFields;
-        public Fields GenericFields
+
+        public HitPoints HitPoints
         {
-            get
-            {
-                return this.genericFields;
-            }
-            set
-            {
-                this.genericFields = value;
-            }
+            get { return this.hitPoints; }
+            set { this.hitPoints = value; }
         }
+        //private Fields genericFields;
+        //public Fields GenericFields
+        //{
+        //    get
+        //    {
+        //        return this.genericFields;
+        //    }
+        //    set
+        //    {
+        //        this.genericFields = value;
+        //    }
+        //}
         public MagicStaff MagicStaffWeapon
         {
             get
@@ -87,6 +95,7 @@ namespace Spellcasters
             :this(DEFAULT_MOON_FIRE, DEFAULT_STARBURST, DEFAULT_ONE_WITH_NATURE) {}
         public Druid(int moonfireOffensive, int starburstOffensive, int oneWithTheNatureOffensive)
         {
+            this.HitPoints = DEFAULT_HIT_POINTS;
             this.MoonfireOffensive = DEFAULT_MOON_FIRE;
             this.StarburstOffensive = DEFAULT_STARBURST;
             this.OneWithTheNatureOffensive = DEFAULT_ONE_WITH_NATURE;    

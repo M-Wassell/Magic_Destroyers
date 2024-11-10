@@ -3,6 +3,9 @@ namespace Blunt
 {
     public class MagicStaff
     {
+        private const int DEFAULT_STAFF_DAMAGE = 100;
+        private const string DEFAULT_STAFF_NAME = "Brute";
+
         private int damage;
         private string staffName;
         public int Damage
@@ -32,14 +35,14 @@ namespace Blunt
         }
 
         public MagicStaff()
-            :this(1,"Player1")
+            :this(DEFAULT_STAFF_DAMAGE, DEFAULT_STAFF_NAME)
         {
                 
         }
         public MagicStaff(int damage, string staffName)
         {
-            this.Damage = damage;
-            this.StaffName = staffName;
+            this.Damage = DEFAULT_STAFF_DAMAGE;
+            this.StaffName = DEFAULT_STAFF_NAME;
         }
     }
 }

@@ -1,11 +1,16 @@
-﻿using System;
+﻿//using MagicDestroyers.Enumerations;
+using System;
 
 namespace Sharp
 {
     public class Sword
     {
-        private int damage;
+        private const string DEFAULT_SWORD_NAME = "Demon";
+        private const int DEFAULT_SWORD_DAMAGE = 100;
+
         private string swordName;
+        private int damage;
+
 
         public string SwordName
         {
@@ -32,7 +37,7 @@ namespace Sharp
         }
 
         public Sword()
-            :this("Player1", 10){}
+            :this(DEFAULT_SWORD_NAME, 10){}
         public Sword(string swordName, int damage)
         {
             this.Damage = damage;
@@ -41,7 +46,7 @@ namespace Sharp
 
         public void SwordType1()
         {
-            Console.WriteLine($"{this.SwordName} does: {this.Damage} Damage");
+            Console.WriteLine($"{DEFAULT_SWORD_NAME} does: {DEFAULT_SWORD_DAMAGE} Damage");
         }
 
 
