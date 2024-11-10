@@ -1,47 +1,32 @@
-﻿//using Melee;
-//using Sharp;
+﻿using Melee;
+using Sharp;
 
 
 
 
-//using System;
-//using System.Collections.Generic;
-//using Enumerations;
+using System;
+using System.Collections.Generic;
+using Enumerations;
 
 
-//namespace MagicDestroyers
-//{
-//    internal class EntryPoint
-//    {
-        
-//        static void Main()
-//        {
-//            //Fields fields = new Fields("Jamie", Faction.Spellcaster);
-//            //Console.WriteLine(((int)fields.Health)+ "\n");
+namespace MagicDestroyers
+{
+    internal class EntryPoint
+    {
 
-//            //Warrior warrior = new Warrior("Mike", Faction.Melee, 500, "Excalibre", 100, 4, 5);
+        static void Main()
+        {
 
-//            Sword sword = new Sword("Bob", 300);
+            Warrior warrior = new Warrior();
+            warrior.Name = "Brandon";
 
-//            //warrior.Greeting();
+            Console.WriteLine(warrior.Name);
 
-//            warrior.GenericFields.Character();
-//            Console.WriteLine("^^^^^ Character() called");
 
-//            sword.SwordType1();
 
-//            Console.WriteLine("^^^^^ Acces Via Sword");
 
-//            warrior.SwordWeapons.SwordType1();
+            Console.ReadLine();
 
-//            Console.WriteLine("^^^^^ Acces Via Warrior");
-
-//            warrior.SwordDamage(warrior.SwordWeapons.SwordName, warrior.SwordWeapons.Damage);
-
-            
-
-//            Console.ReadLine();
-
-//        }
-//    }
-//}
+        }
+    }
+}
