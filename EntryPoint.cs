@@ -1,13 +1,8 @@
 ﻿using Melee;
 using Sharp;
-
-
-
-
 using System;
 using System.Collections.Generic;
 using Enumerations;
-
 
 namespace MagicDestroyers
 {
@@ -17,13 +12,12 @@ namespace MagicDestroyers
         static void Main()
         {
 
-            Warrior warrior = new Warrior();
+            Warrior warrior = new Warrior("Mike", 10, 37, 100);
             warrior.Name = "Brandon";
 
             Console.WriteLine(warrior.Name);
 
-
-
+            warrior.WarriorAttributes();
 
             Console.ReadLine();
 

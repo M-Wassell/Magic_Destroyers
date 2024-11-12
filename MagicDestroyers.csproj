@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\Melee\Melee.cs" />
+    <Compile Include="Characters\Spellcasters\Spellcaster.cs" />
     <Compile Include="Common\Character.cs" />
     <Compile Include="Enumerations\EnumSwordName.cs" />
     <Compile Include="Enumerations\Faction.cs" />

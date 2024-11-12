@@ -8,7 +8,6 @@ namespace Common
     {
         private string name;
         private int level, age;
-
         public string Name
         {
             get
@@ -45,10 +44,7 @@ namespace Common
             }
         }
 
-        public Character()
-        {
-            
-        }
+        public Character(){}
         public Character(string name, int level, int age)
         {
             this.Name = name;
@@ -60,5 +56,14 @@ namespace Common
         {
             Console.WriteLine($"Hi from: {this.Name}");
         }
+
+        //public void WarriorAttributes() ----- to fix, only to be called from this class!!!
+        //{
+
+        //    Console.WriteLine($"Warrior name: {base.Name}\n" +
+        //        $"Warrior Level: {base.Level}\n" +
+        //        $"Warrior Age: {base.Age}\n" +
+        //        $"Warrior Health: {base.Health}");
+        //}
     }
 }

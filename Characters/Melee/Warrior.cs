@@ -3,18 +3,19 @@ using Common;
 using Enumerations;
 //using MagicDestroyers.Enumerations;
 using Sharp;
+using Spellcasters;
 using System;
+using System.Xml.Linq;
 
 
 namespace Melee
 {
-    public class Warrior: Character
+    public class Warrior : Melee
     {
-        private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
-        //private readonly EnumSwordName DEFAULT_SWORD_NAME = EnumSwordName.Slasher;
+        //private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
         private readonly Faction DEFAULT_FACTION = Faction.Melee;
         private readonly Sword DEFAULT_SWORD_WEAPON = new Sword();
-        //private readonly Fields DEFAULT_FIELDS = new Fields();
+
         private const int DEFAULT_STRIKE_DAMAGE = 50;
         private const int DEFAULT_SKIN_HARDEN = 60;
         private const int DEFAULT_EXICUTIONER_DAMAGE = 70;
@@ -22,30 +23,17 @@ namespace Melee
         private int strikeDamageOffensive, skinHardenDefensive, executionerDamageOffensive;
 
         private Sword swordWeapon;
-       // private EnumSwordName swordName;
-        //private Fields genericFields;
+
         private Faction faction;
-        private HitPoints hitPoints;
+        //private HitPoints hitPoints;
 
 
-        public HitPoints HitPoints
-        {
-            get { return this.hitPoints; }
-            set { this.hitPoints = value; }
-        }
-        //public EnumSwordName SwordName
+        //public HitPoints HitPoints
         //{
-        //    get
-        //    {
-        //        return this.swordName;
-        //    }
-
-        //    set
-        //    {
-        //        this.swordName = value;
-        //    }
+        //    get { return this.hitPoints; }
+        //    set { this.hitPoints = value; }
         //}
-        public Faction Faction 
+        public Faction Faction
         {
             get { return this.faction; }
             set { this.faction = value; }
@@ -102,15 +90,19 @@ namespace Melee
                 this.swordWeapon = value;
             }
         }
-        
+        public Warrior(string name, int level, int age, int health)
+                :base(name, level, age, health)
+        {
 
+        }
         public Warrior()
-            : this(Faction.Melee){}
+            : this(Faction.Melee) { }
 
         public Warrior(Faction faction)
         {
-            this.HitPoints = DEFAULT_HIT_POINTS;
+            //this.HitPoints = DEFAULT_HIT_POINTS;
 
+            base.Health = Health;
             this.SwordWeapons = new Sword();
 
             this.StrikeDamageOffensive = DEFAULT_STRIKE_DAMAGE;
@@ -118,17 +110,19 @@ namespace Melee
             this.SkinHardenDefensive = DEFAULT_SKIN_HARDEN;
         }
 
-        public Warrior(string name, int level, int age)
-            :base(name, level, age)
+
+        public void SwordDamage(string damage)
         {
-                
+            Console.WriteLine($"damage = {damage}");
         }
 
-
-
-        public void SwordDamage(string damage, int swordName)
+        public void WarriorAttributes()
         {
-            Console.WriteLine($"{swordName} damage = {damage}");
+   
+            Console.WriteLine($"Warrior name: {base.Name}\n" +
+                $"Warrior Level: {base.Level}\n" +
+                $"Warrior Age: {base.Age}\n" +
+                $"Warrior Health: {base.Health}");
         }
 
     }
