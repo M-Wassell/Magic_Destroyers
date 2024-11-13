@@ -6,12 +6,12 @@ using Sharp;
 
 namespace Spellcasters
 {
-    internal class Necromancer
+    internal class Necromancer : Spellcaster
     {
         private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
         private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
         private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
-        //private readonly Fields DEFAULT_FIELDS = new Fields();
+        
         private const int DEFAULT_SHADOW_RAGE = 50;
         private const int DEFAULT_VAMPIRE_TOUCH = 60;
         private const int DEFAULT_BONE_SHIELD = 70;
@@ -19,26 +19,13 @@ namespace Spellcasters
         private int shadowRageOffense, vampireTouchOffense, boneShieldDefense;
         private Faction faction;
         private HitPoints hitPoints;
-        //private Fields genericFields;
         private MagicStaff magicStaffWeapon;
-
-
+        
         public HitPoints HitPoints
         {
             get { return this.hitPoints; }
             set { this.hitPoints = value; }
         }
-        //public Fields GenericFields
-        //{
-        //    get
-        //    {
-        //        return this.genericFields;
-        //    }
-        //    set
-        //    {
-        //        this.genericFields = value;
-        //    }
-        //}
         public MagicStaff MagicStaffWeapon
         {
             get
@@ -89,6 +76,9 @@ namespace Spellcasters
             }
         }
 
+
+        public Necromancer(string name, int level, int age, int manaPoints)
+                : base(name, level, age, manaPoints) { }
         public Necromancer()
             :this(DEFAULT_SHADOW_RAGE) {}
 
@@ -101,6 +91,7 @@ namespace Spellcasters
             this.ShadowRageOffense = DEFAULT_SHADOW_RAGE;
             this.VampireTouchOffense = DEFAULT_VAMPIRE_TOUCH;
             this.BoneShieldDefense = DEFAULT_BONE_SHIELD;
+            this.MagicStaffWeapon = DEFAULT_STAFF_WEAPON;
         }
     }
 }

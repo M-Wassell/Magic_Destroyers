@@ -10,7 +10,6 @@ namespace Melee
 
         private readonly Faction DEFAULT_FACTION = Faction.Melee;
         private readonly Sword DEFAULT_SWORD_WEAPON = new Sword();
-
         private const int DEFAULT_HOLY_BLOW = 50;
         private const int DEFAULT_PURIFY_SOUL = 60;
         private const int DEFAULT_RIGHTEOUS_WINGS = 70;
@@ -35,7 +34,6 @@ namespace Melee
             get { return this.faction; }
             set { this.faction = value; }
         }
-
         public int HolyBlowOffense 
         {
             get
@@ -71,10 +69,7 @@ namespace Melee
         }
 
         public Knight(string name, int level, int age, int health)
-                : base(name, level, age, health)
-        {
-
-        }
+                : base(name, level, age, health){}
 
         public Knight()
             :this(DEFAULT_HOLY_BLOW) {}
@@ -84,10 +79,10 @@ namespace Melee
 
         public Knight(int holyBlowOffense, int purifySoulOffense, int righteousWings) 
         {
-
             this.HolyBlowOffense = DEFAULT_HOLY_BLOW;
             this.PurifySoulOffense = DEFAULT_PURIFY_SOUL;
             this.RighteousWings = DEFAULT_RIGHTEOUS_WINGS;
+            this.SwordWeapons = DEFAULT_SWORD_WEAPON;
         }
     }
 }

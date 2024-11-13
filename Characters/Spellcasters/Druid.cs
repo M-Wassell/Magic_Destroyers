@@ -6,12 +6,12 @@ using System.Linq.Expressions;
 
 namespace Spellcasters
 {
-    public class Druid
+    public class Druid :Spellcaster
     {
         private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
         private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
         private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
-        //private readonly Fields DEFAULT_FIELDS = new Fields();
+        
         private const int DEFAULT_MOON_FIRE = 50;
         private const int DEFAULT_STARBURST = 60;
         private const int DEFAULT_ONE_WITH_NATURE = 70;
@@ -26,18 +26,6 @@ namespace Spellcasters
             get { return this.hitPoints; }
             set { this.hitPoints = value; }
         }
-        //private Fields genericFields;
-        //public Fields GenericFields
-        //{
-        //    get
-        //    {
-        //        return this.genericFields;
-        //    }
-        //    set
-        //    {
-        //        this.genericFields = value;
-        //    }
-        //}
         public MagicStaff MagicStaffWeapon
         {
             get
@@ -88,6 +76,8 @@ namespace Spellcasters
             }
         }
 
+        public Druid(string name, int level, int age, int manaPoints)
+                : base(name, level, age, manaPoints) { }
         public Druid()
             :this(DEFAULT_MOON_FIRE) {}
 
@@ -98,7 +88,8 @@ namespace Spellcasters
             this.HitPoints = DEFAULT_HIT_POINTS;
             this.MoonfireOffensive = DEFAULT_MOON_FIRE;
             this.StarburstOffensive = DEFAULT_STARBURST;
-            this.OneWithTheNatureOffensive = DEFAULT_ONE_WITH_NATURE;    
+            this.OneWithTheNatureOffensive = DEFAULT_ONE_WITH_NATURE;
+            this.MagicStaffWeapon = DEFAULT_STAFF_WEAPON;
         }
 
     }

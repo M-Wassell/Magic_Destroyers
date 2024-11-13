@@ -5,12 +5,11 @@ using Enumerations;
 
 namespace Spellcasters
 {
-    public class Mage
+    public class Mage : Spellcaster
     {
         private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
         private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
         private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
-        //private readonly Fields DEFAULT_FIELDS = new Fields();
         private const int DEFAULT_ARCANE_WRATH = 50;
         private const int DEFAULT_FIREWALL = 60;
         private const int DEFAULT_MEDITATION = 70;
@@ -25,19 +24,7 @@ namespace Spellcasters
             get { return this.hitPoints; }
             set { this.hitPoints = value; }
         }
-        //private Fields genericFields;
-
-        //public Fields GenericFields
-        //{
-        //    get
-        //    {
-        //        return this.genericFields;
-        //    }
-        //    set
-        //    {
-        //        this.genericFields = value;
-        //    }
-        //}
+        
         public MagicStaff MagicStaffWeapon
         {
             get
@@ -88,6 +75,8 @@ namespace Spellcasters
             }
         }
 
+        public Mage(string name, int level, int age, int manaPoints)
+                : base(name, level, age, manaPoints) { }
         public Mage()
             :this(DEFAULT_ARCANE_WRATH) {}
 
@@ -99,6 +88,7 @@ namespace Spellcasters
             this.ArcaneWrathOffense = DEFAULT_ARCANE_WRATH;
             this.FirewallOffense = DEFAULT_FIREWALL;
             this.MeditationDeffensive = DEFAULT_MEDITATION;
+            this.MagicStaffWeapon = DEFAULT_STAFF_WEAPON;
         }
 
     }

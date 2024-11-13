@@ -18,7 +18,6 @@ namespace MagicDestroyers
             Console.WriteLine(warrior.Name);
 
             warrior.WarriorAttributes();
-
             Console.ReadLine();
 
         }

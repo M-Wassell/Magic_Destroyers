@@ -3,16 +3,15 @@ using Common;
 using Enumerations;
 //using MagicDestroyers.Enumerations;
 using Sharp;
-using Spellcasters;
 using System;
-using System.Xml.Linq;
+
 
 
 namespace Melee
 {
     public class Warrior : Melee
     {
-        //private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
+        
         private readonly Faction DEFAULT_FACTION = Faction.Melee;
         private readonly Sword DEFAULT_SWORD_WEAPON = new Sword();
 
@@ -21,18 +20,9 @@ namespace Melee
         private const int DEFAULT_EXICUTIONER_DAMAGE = 70;
 
         private int strikeDamageOffensive, skinHardenDefensive, executionerDamageOffensive;
-
         private Sword swordWeapon;
-
         private Faction faction;
-        //private HitPoints hitPoints;
-
-
-        //public HitPoints HitPoints
-        //{
-        //    get { return this.hitPoints; }
-        //    set { this.hitPoints = value; }
-        //}
+        
         public Faction Faction
         {
             get { return this.faction; }
@@ -100,29 +90,22 @@ namespace Melee
 
         public Warrior(Faction faction)
         {
-            //this.HitPoints = DEFAULT_HIT_POINTS;
-
             base.Health = Health;
-            this.SwordWeapons = new Sword();
-
+            this.SwordWeapons = DEFAULT_SWORD_WEAPON;
             this.StrikeDamageOffensive = DEFAULT_STRIKE_DAMAGE;
             this.ExecutionerDamageOffensive = DEFAULT_EXICUTIONER_DAMAGE;
             this.SkinHardenDefensive = DEFAULT_SKIN_HARDEN;
         }
-
 
         public void SwordDamage(string damage)
         {
             Console.WriteLine($"damage = {damage}");
         }
 
-        public void WarriorAttributes()
+        public virtual void WarriorAttributes()
         {
-   
-            Console.WriteLine($"Warrior name: {base.Name}\n" +
-                $"Warrior Level: {base.Level}\n" +
-                $"Warrior Age: {base.Age}\n" +
-                $"Warrior Health: {base.Health}");
+            Console.WriteLine($"I am a mighty Warrior");
+            base.CharacterAttributes();
         }
 
     }

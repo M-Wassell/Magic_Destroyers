@@ -54,16 +54,16 @@ namespace Common
 
         public void Greeting(string name)
         {
-            Console.WriteLine($"Hi from: {this.Name}");
+            Console.WriteLine($"Hi from: {name}");
         }
 
-        //public void WarriorAttributes() ----- to fix, only to be called from this class!!!
-        //{
+        protected void CharacterAttributes()
+        {
 
-        //    Console.WriteLine($"Warrior name: {base.Name}\n" +
-        //        $"Warrior Level: {base.Level}\n" +
-        //        $"Warrior Age: {base.Age}\n" +
-        //        $"Warrior Health: {base.Health}");
-        //}
-    }
+            Console.WriteLine($"Name: {Name}\n" +
+                $"Level: {Level}\n" +
+                $"Age: {Age}\n" +
+                $"Health: {HitPoints.Health}");
+        }
+}
 }
