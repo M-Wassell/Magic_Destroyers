@@ -1,12 +1,16 @@
 ﻿
 using Blunt;
-
+using Common;
 using Enumerations;
+using Interfaces;
+using Melee;
 using Sharp;
+using System;
+using Weapons;
 
 namespace Spellcasters
 {
-    internal class Necromancer : Spellcaster
+    internal class Necromancer : Character, ISpellcaster
     {
         private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
         private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
@@ -20,6 +24,9 @@ namespace Spellcasters
         private Faction faction;
         private HitPoints hitPoints;
         private MagicStaff magicStaffWeapon;
+        private Spell mySpell;
+        private int mana;
+
         
         public HitPoints HitPoints
         {
@@ -76,11 +83,38 @@ namespace Spellcasters
             }
         }
 
+        public Spell MySpell
+        {
+            get
+            {
+                return this.mySpell;
+            }
+            set
+            {
+                this.mySpell = value;
+            }
+        }
+        public int Mana
+        {
+            get
+            {
+                return this.mana;
+            }
+            set
+            {
+                this.mana = value;
+            }
+        }
 
-        public Necromancer(string name, int level, int age, int manaPoints)
-                : base(name, level, age, manaPoints) { }
-        public Necromancer()
-            :this(DEFAULT_SHADOW_RAGE) {}
+        public Necromancer() 
+        { 
+            this.MySpell = new Spell();
+            this.Mana = 100;
+        }
+
+        public Necromancer(string name, int level, int age)
+                : base(name, level, age) { }
+        
 
         public Necromancer(int shadowRageOffense)
             :this(DEFAULT_SHADOW_RAGE, DEFAULT_VAMPIRE_TOUCH, DEFAULT_BONE_SHIELD) {}
@@ -92,6 +126,19 @@ namespace Spellcasters
             this.VampireTouchOffense = DEFAULT_VAMPIRE_TOUCH;
             this.BoneShieldDefense = DEFAULT_BONE_SHIELD;
             this.MagicStaffWeapon = DEFAULT_STAFF_WEAPON;
+        }
+
+        public override int Addition(int firstNum, int secondNum)
+        {
+            int sum = firstNum + secondNum;
+            Console.WriteLine($"Warrior sum = {sum}");
+            return sum;
+        }
+
+        public void CastSpell(Warrior warrior)
+        {
+            warrior.Health = warrior.Health - this.mySpell.Damage;
+            this.mana = this.mana - this.mySpell.ManaCost;
         }
     }
 }

@@ -1,12 +1,16 @@
 ﻿
 using Blunt;
-
+using Common;
 using Enumerations;
+using Interfaces;
+using Melee;
+using System;
 using System.Linq.Expressions;
+using Weapons;
 
 namespace Spellcasters
 {
-    public class Druid :Spellcaster
+    public class Druid : Character, ISpellcaster
     {
         private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
         private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
@@ -16,11 +20,13 @@ namespace Spellcasters
         private const int DEFAULT_STARBURST = 60;
         private const int DEFAULT_ONE_WITH_NATURE = 70;
 
-        private int moonfireOffensive, starburstOffensive, oneWithTheNatureOffensive;
+        private int moonfireOffensive, starburstOffensive, oneWithTheNatureOffensive, mana;
         private Faction faction;
         private HitPoints hitPoints;
         private MagicStaff magicStaffWeapon;
+        private Spell mySpell;
 
+        
         public HitPoints HitPoints
         {
             get { return this.hitPoints; }
@@ -75,11 +81,40 @@ namespace Spellcasters
                 this.oneWithTheNatureOffensive = value;
             }
         }
+        public Spell MySpell
+        {
+            get
+            {
+                return this.mySpell;
+            }
+            set
+            {
+                this.mySpell = value;
+            }
+        }
+        public int Mana 
+        {
+            get 
+            {
+                return this.mana;
+            }
+            set 
+            {
+                this.mana = value;
+            } 
+        }
 
-        public Druid(string name, int level, int age, int manaPoints)
-                : base(name, level, age, manaPoints) { }
         public Druid()
-            :this(DEFAULT_MOON_FIRE) {}
+        {
+            this.MySpell = new Spell();
+            this.Mana = 100;
+        }
+
+        public Druid(string name, int level, int age)
+                : base(name, level, age)
+        {
+
+        }
 
         public Druid(int moonfireOffensive)
             :this(DEFAULT_MOON_FIRE, DEFAULT_STARBURST, DEFAULT_ONE_WITH_NATURE) {}
@@ -92,5 +127,20 @@ namespace Spellcasters
             this.MagicStaffWeapon = DEFAULT_STAFF_WEAPON;
         }
 
+        public override int Addition(int firstNum, int secondNum)
+        {
+            int sum = firstNum + secondNum;
+            Console.WriteLine($"Warrior sum = {sum}");
+            return sum;
+        }
+
+        public void CastSpell(Warrior warrior)
+        {
+            Console.WriteLine("Warrior Health Check: " + warrior.Health);
+
+            warrior.Health = warrior.Health - this.MySpell.Damage;
+            
+            this.mana = this.mana - this.mySpell.ManaCost;
+        }
     }
 }

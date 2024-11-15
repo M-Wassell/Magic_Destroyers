@@ -1,9 +1,8 @@
 ﻿
-
 namespace Interfaces
 {
     public interface ICalculator
     {
-        void Addition(int firstNum, int secondNum);
+        int Addition(int firstNum, int secondNum);
     }
 }

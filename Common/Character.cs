@@ -1,10 +1,11 @@
 ﻿using Enumerations;
+using Interfaces;
 using Melee;
 using System;
 
 namespace Common
 {
-    public class Character
+    public abstract class Character
     {
         private string name;
         private int level, age;
@@ -44,7 +45,7 @@ namespace Common
             }
         }
 
-        public Character(){}
+        public Character() { }
         public Character(string name, int level, int age)
         {
             this.Name = name;
@@ -65,5 +66,7 @@ namespace Common
                 $"Age: {Age}\n" +
                 $"Health: {HitPoints.Health}");
         }
-}
+
+        public abstract int Addition(int firstNum, int secondNum);
+    }
 }

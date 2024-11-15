@@ -84,5 +84,11 @@ namespace Melee
             this.RighteousWings = DEFAULT_RIGHTEOUS_WINGS;
             this.SwordWeapons = DEFAULT_SWORD_WEAPON;
         }
+
+        public override int Addition(int firstNum, int secondNum)
+        {
+            int sum = firstNum * secondNum;
+            return sum;
+        }
     }
 }

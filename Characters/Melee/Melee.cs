@@ -1,10 +1,8 @@
-﻿
-
-using Common;
+﻿using Common;
 
 namespace Melee
 {
-    public class Melee : Character
+    public abstract class Melee : Character
     {
         private int health;
 

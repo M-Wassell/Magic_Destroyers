@@ -1,10 +1,11 @@
 ﻿
 using Enumerations;
 using Sharp;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Melee
 {
-    public class Assassin:Melee
+    public class Assassin : Melee
     {
         
         private readonly Faction DEFAULT_FACTION = Faction.Melee;
@@ -82,6 +83,12 @@ namespace Melee
             this.BleedToDeathOffense = DEFAULT_BLEED_TO_DEATH;
             this.Survival = DEFAULT_SURVIVAL;
             this.SwordWeapons = DEFAULT_SWORD_WEAPON;
+        }
+
+        public override int Addition(int firstNum, int secondNum)
+        {
+            int sum = firstNum + secondNum;
+            return sum;
         }
     }
 }

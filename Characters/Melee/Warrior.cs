@@ -1,11 +1,10 @@
 ﻿
 using Common;
 using Enumerations;
-//using MagicDestroyers.Enumerations;
+
+
 using Sharp;
 using System;
-
-
 
 namespace Melee
 {
@@ -106,6 +105,13 @@ namespace Melee
         {
             Console.WriteLine($"I am a mighty Warrior");
             base.CharacterAttributes();
+        }
+
+        public override int Addition(int firstNum, int secondNum)
+        {
+            int sum = firstNum + secondNum;
+            Console.WriteLine($"Warrior sum = {sum}");
+            return sum;
         }
 
     }
