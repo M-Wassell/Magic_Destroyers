@@ -1,14 +1,18 @@
 ﻿using Enumerations;
 using Interfaces;
 using Melee;
+using Sharp;
 using System;
 
 namespace Common
 {
-    public abstract class Character
+    public abstract class Character : IAttack, IDefend
     {
+        Faction faction;
+        private Sword swordWeapon;
         private string name;
-        private int level, age;
+        private int level, age, healthPoints;
+
         public string Name
         {
             get
@@ -20,7 +24,6 @@ namespace Common
                 this.name = value;
             }
         }
-
         public int Level
         {
             get
@@ -32,7 +35,6 @@ namespace Common
                 this.level = value;
             }
         }
-
         public int Age
         {
             get
@@ -44,13 +46,44 @@ namespace Common
                 this.age = value;
             }
         }
-
-        public Character() { }
-        public Character(string name, int level, int age)
+        public int HealthPoints
         {
-            this.Name = name;
-            this.Level = level;
-            this.Age = age;
+            get
+            {
+                return this.level;
+            }
+            set
+            {
+                if (value >=1 || value <=101)
+                {
+                    this.level = value;
+                }
+                throw new ArgumentOutOfRangeException(string.Empty, "Health Points need to be between 1 - 100");
+
+            }
+        }
+
+        Faction Factions
+        {
+            get
+            {
+                return this.faction;
+            }
+            set
+            {
+                this.faction = value;
+            }
+        }
+        public Sword SwordWeapons
+        {
+            get
+            {
+                return this.swordWeapon;
+            }
+            set
+            {
+                this.swordWeapon = value;
+            }
         }
 
         public void Greeting(string name)
@@ -64,9 +97,16 @@ namespace Common
             Console.WriteLine($"Name: {Name}\n" +
                 $"Level: {Level}\n" +
                 $"Age: {Age}\n" +
-                $"Health: {HitPoints.Health}");
+                $"Health: {HealthPoints}");
         }
 
         public abstract int Addition(int firstNum, int secondNum);
+
+
+        public abstract void Attack();
+
+        public abstract void SpecialAttack();
+
+        public abstract void Defend();
     }
 }

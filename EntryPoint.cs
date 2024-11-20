@@ -27,7 +27,7 @@ namespace MagicDestroyers
 
             mage.CastSpell(warrior);
 
-            Console.WriteLine("Entry Point check Mage Mana:  " + mage.Mana);
+            Console.WriteLine("Entry Point check Necromancer Mana:  " + mage.Mana);
 
             Console.WriteLine("Entry Point check Warrior health: " + warrior.Health);
 

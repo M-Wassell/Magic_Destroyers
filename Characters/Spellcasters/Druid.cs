@@ -110,12 +110,6 @@ namespace Spellcasters
             this.Mana = 100;
         }
 
-        public Druid(string name, int level, int age)
-                : base(name, level, age)
-        {
-
-        }
-
         public Druid(int moonfireOffensive)
             :this(DEFAULT_MOON_FIRE, DEFAULT_STARBURST, DEFAULT_ONE_WITH_NATURE) {}
         public Druid(int moonfireOffensive, int starburstOffensive, int oneWithTheNatureOffensive)
@@ -134,13 +128,28 @@ namespace Spellcasters
             return sum;
         }
 
-        public void CastSpell(Warrior warrior)
+        public void CastSpell(Character character)
         {
-            Console.WriteLine("Warrior Health Check: " + warrior.Health);
+            Console.WriteLine("Warrior Health Check: " + character.HealthPoints);
 
-            warrior.Health = warrior.Health - this.MySpell.Damage;
+            character.HealthPoints = character.HealthPoints - this.MySpell.Damage;
             
             this.mana = this.mana - this.mySpell.ManaCost;
+        }
+
+        public override void Attack()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SpecialAttack()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Defend()
+        {
+            throw new NotImplementedException();
         }
     }
 }
