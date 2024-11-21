@@ -1,42 +1,20 @@
 ﻿
-namespace Sharp
+namespace MagicDestroyers.Weapons.Sharp
 {
-    public class Axe
+    public class Axe : Sharp
     {
         private const int DEFAULT_AXE_DAMMAGE = 100;
-        private const string DEFAULT_AXE_NAME = "Power Axe";
 
-        private int damage;
-        private string axeName;
-
-        public int Damage
+        public Axe()
+            :this(DEFAULT_AXE_DAMMAGE)
         {
-            get
-            {
-                return this.damage;
-            }
-
-            set
-            {
-                this.damage = value;
-            }
+                
         }
-        public string AxeName
-        {
-            get
-            {
-                return this.axeName;
-            }
 
-            set
-            {
-                this.axeName = value;
-            }
-        }
-        public Axe(int damage, string axeName) 
+        public Axe(int weaponDamage) 
         { 
-            this.Damage = DEFAULT_AXE_DAMMAGE;
-            this.AxeName = DEFAULT_AXE_NAME;
+            this.WeaponDamage = weaponDamage;
+
         }
     }
 }

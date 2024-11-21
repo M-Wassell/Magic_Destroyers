@@ -1,33 +1,23 @@
 ﻿
 using Common;
 using Enumerations;
+using MagicDestroyers.Weapons.Sharp;
 
-
-using Sharp;
 using System;
 
 namespace Melee
 {
     public class Warrior : Melee
     {
-        private readonly Faction DEFAULT_FACTION = Faction.Melee;
+
         private readonly Sword DEFAULT_SWORD = new Sword();
-        private Faction faction;
-        
-        public Faction Faction
-        {
-            get { return this.faction; }
-            set { this.faction = value; }
-        }
 
         public Warrior()
             : this(Faction.Melee) { }
 
         public Warrior(Faction faction)
         {
-
             base.Sword = DEFAULT_SWORD;
-
         }
 
         public void SwordDamage(string damage)

@@ -1,48 +1,19 @@
 ﻿
-namespace Blunt
+namespace MagicDestroyers.Weapons.Blunt
 {
-    public class MagicStaff
+    public class MagicStaff : Blunt
     {
-        private const int DEFAULT_STAFF_DAMAGE = 100;
-        private const string DEFAULT_STAFF_NAME = "Brute";
+        private const int DEFAULT_WEAPON_DAMAGE = 100;
 
-        private int damage;
-        private string staffName;
-        public int Damage
-        {
-            get
-            {
-                return this.damage;
-            }
-
-            set
-            {
-                this.damage = value;
-            }
-        }
-
-        public string StaffName
-        {
-            get
-            {
-                return this.staffName;
-            }
-
-            set
-            {
-                this.staffName = value;
-            }
-        }
 
         public MagicStaff()
-            :this(DEFAULT_STAFF_DAMAGE, DEFAULT_STAFF_NAME)
+            :this(DEFAULT_WEAPON_DAMAGE)
         {
                 
         }
-        public MagicStaff(int damage, string staffName)
+        public MagicStaff(int weaponDamage)
         {
-            this.Damage = DEFAULT_STAFF_DAMAGE;
-            this.StaffName = DEFAULT_STAFF_NAME;
+            this.WeaponDamage = weaponDamage;
         }
     }
 }

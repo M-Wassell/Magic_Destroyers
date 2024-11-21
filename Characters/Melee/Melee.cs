@@ -1,25 +1,31 @@
 ﻿using Common;
+using System;
 
 namespace Melee
 {
     public abstract class Melee : Character
     {
-        private int health;
+        private int abilityPoints;
 
-        public int Health
+        public int AbilityPoints
         {
-            get { return this.health; }
-            set { this.health = value; }
+            get 
+            { 
+                return this.abilityPoints; 
+            }
+            set 
+            {
+                if (value >= 0 || value <= 100)
+                {
+                    this.abilityPoints = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException(string.Empty, "Ability Points needs to be between 0 - 100");
+                }
+                 
+            }
         }
 
-        public Melee()
-        {
-                
-        }
-        public Melee(string name, int level, int age, int health)
-            :base(name, level, age)
-        {
-            this.Health = health;
-        }
     }
 }

@@ -1,35 +1,26 @@
 ﻿
-using Blunt;
+
 using Common;
 using Enumerations;
 using Interfaces;
+using MagicDestroyers.Weapons.Blunt;
 using Melee;
 using System;
 using Weapons;
 
 namespace Spellcasters
 {
-    public class Mage : Character, ISpellcaster
+    public class Mage : Spellcaster, ISpellcaster
     {
-        private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
-        private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
         private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
-        private const int DEFAULT_ARCANE_WRATH = 50;
-        private const int DEFAULT_FIREWALL = 60;
-        private const int DEFAULT_MEDITATION = 70;
+        private const string DEFAULT_NAME = "Hogwarth";
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTH_POINTS = 100;
 
-        private int arcaneWrathOffense, firewallOffense, meditationDeffensive;
-        private Faction faction;
-        private HitPoints hitPoints;
         private MagicStaff magicStaffWeapon;
         private Spell mySpell;
         private int mana;
 
-        public HitPoints HitPoints
-        {
-            get { return this.hitPoints; }
-            set { this.hitPoints = value; }
-        }
         public MagicStaff MagicStaffWeapon
         {
             get
@@ -41,50 +32,12 @@ namespace Spellcasters
                 this.magicStaffWeapon = value;
             }
         }
-        public Faction Faction
-        {
-            get { return this.faction; }
-            set { this.faction = value; }
-        }
-        public int ArcaneWrathOffense
-        {
-            get
-            {
-                return this.arcaneWrathOffense;
-            }
-            set
-            {
-                this.arcaneWrathOffense = value;
-            }
-        }
-        public int FirewallOffense
-        {
-            get
-            {
-                return this.firewallOffense;
-            }
-            set
-            {
-                this.firewallOffense = value;
-            }
-        }
-        public int MeditationDeffensive
-        {
-            get
-            {
-                return this.meditationDeffensive;
-            }
-            set
-            {
-                this.meditationDeffensive = value;
-            }
-        }
 
-        public Spell MySpell 
+        public Spell MySpell
         {
             get { return this.mySpell; }
             set { this.mySpell = value; }
-            
+
         }
         public int Mana
         {
@@ -98,22 +51,20 @@ namespace Spellcasters
             }
         }
         public Mage()
-        { 
+            : this(DEFAULT_NAME, DEFAULT_LEVEL)
+        {
             this.MySpell = new Spell();
             this.Mana = 100;
         }
-        public Mage(string name, int level, int age)
-                : base(name, level, age) { }
 
-
-        public Mage(int arcaneWrathOffense)
-            : this(DEFAULT_ARCANE_WRATH, DEFAULT_FIREWALL, DEFAULT_MEDITATION) { }
-        public Mage(int arcaneWrathOffense, int firewallOffense, int meditationDeffensive)
+        public Mage(string name, int level)
+            : this(name, level, DEFAULT_HEALTH_POINTS) { }
+        public Mage(string name, int level, int healthPoints)
         {
-            this.HitPoints = DEFAULT_HIT_POINTS;
-            this.ArcaneWrathOffense = DEFAULT_ARCANE_WRATH;
-            this.FirewallOffense = DEFAULT_FIREWALL;
-            this.MeditationDeffensive = DEFAULT_MEDITATION;
+            base.Factions = Faction.Spellcaster;
+            base.Name = name;
+            base.Level = level;
+            base.HealthPoints = healthPoints;
             this.MagicStaffWeapon = DEFAULT_STAFF_WEAPON;
         }
 
@@ -124,11 +75,41 @@ namespace Spellcasters
             return sum;
         }
 
-        public void CastSpell(Warrior warrior)
+        public void CastSpell(Character character)
         {
-            warrior.Health = warrior.Health - this.mySpell.Damage;
+            character.HealthPoints = character.HealthPoints - this.mySpell.Damage;
 
             this.mana = this.mana - this.mySpell.ManaCost;
+        }
+
+        public void ArcaneWrath()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Firewall()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Meditation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Attack()
+        {
+            ArcaneWrath();
+        }
+
+        public override void SpecialAttack()
+        {
+            Firewall();
+        }
+
+        public override void Defend()
+        {
+            Meditation();
         }
     }
 }

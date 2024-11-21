@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicDestroyers.Interfaces
+﻿namespace Interfaces
 {
-    internal class IDefend
+    public interface IDefend
     {
+        void Defend();
     }
 }

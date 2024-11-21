@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace MagicDestroyers.Interfaces
+namespace Interfaces
 {
-    internal class IAttack
+    public interface IAttack
     {
+        void Attack();
+
+        void SpecialAttack();
     }
 }

@@ -1,22 +1,19 @@
 ﻿
 
 using Enumerations;
-using Sharp;
+using MagicDestroyers.Weapons.Sharp;
+
 
 namespace Melee
 {
     public class Knight : Melee
     {
-
-        private readonly Faction DEFAULT_FACTION = Faction.Melee;
         private readonly Sword DEFAULT_SWORD_WEAPON = new Sword();
-        private const int DEFAULT_HOLY_BLOW = 50;
-        private const int DEFAULT_PURIFY_SOUL = 60;
-        private const int DEFAULT_RIGHTEOUS_WINGS = 70;
+        private const string DEFAULT_NAME = "Kane";
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTH_POINTS = 100;
 
-        private int holyBlowOffense, purifySoulOffense, righteousWings;
         private Sword swordWeapon;
-        private Faction faction;
 
         public Sword SwordWeapons
         {
@@ -29,66 +26,54 @@ namespace Melee
                 this.swordWeapon = value;
             }
         }
-        public Faction Faction
-        {
-            get { return this.faction; }
-            set { this.faction = value; }
-        }
-        public int HolyBlowOffense 
-        {
-            get
-            {
-                return this.holyBlowOffense;
-            }
-            set
-            {
-                this.holyBlowOffense = value;
-            } 
-        }
-        public int PurifySoulOffense
-        {
-            get
-            {
-                return this.purifySoulOffense;
-            }
-            set
-            {
-                this.purifySoulOffense = value;
-            }
-        }
-        public int RighteousWings
-        {
-            get
-            {
-                return this.righteousWings;
-            }
-            set
-            {
-                this.righteousWings = value;
-            }
-        }
-
-        public Knight(string name, int level, int age, int health)
-                : base(name, level, age, health){}
 
         public Knight()
-            :this(DEFAULT_HOLY_BLOW) {}
+            :this(DEFAULT_NAME) {}
 
-        public Knight(int holyBlowOffense)
-            :this(DEFAULT_HOLY_BLOW, DEFAULT_PURIFY_SOUL, DEFAULT_RIGHTEOUS_WINGS) {}
+        public Knight(string name)
+            :this(name, DEFAULT_LEVEL, DEFAULT_HEALTH_POINTS) {}
 
-        public Knight(int holyBlowOffense, int purifySoulOffense, int righteousWings) 
+        public Knight(string name, int level, int healthPoints) 
         {
-            this.HolyBlowOffense = DEFAULT_HOLY_BLOW;
-            this.PurifySoulOffense = DEFAULT_PURIFY_SOUL;
-            this.RighteousWings = DEFAULT_RIGHTEOUS_WINGS;
+            base.Factions = Faction.Melee;
             this.SwordWeapons = DEFAULT_SWORD_WEAPON;
+            base.Name = name;
+            base.Level = level;
+            base.HealthPoints = healthPoints;
         }
 
         public override int Addition(int firstNum, int secondNum)
         {
             int sum = firstNum * secondNum;
             return sum;
+        }
+
+        public void HolyBlow()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void PurifySoul()
+        {
+            throw new System.NotImplementedException();
+        }
+        public void RighteousWings()
+        {
+            throw new System.NotImplementedException();
+        }
+        public override void Attack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void SpecialAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Defend()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

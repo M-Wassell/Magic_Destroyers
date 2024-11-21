@@ -1,35 +1,33 @@
-﻿
+﻿using System;
 
-//using Common;
-//using System.Security.Authentication.ExtendedProtection;
+using Common;
 
-//namespace Spellcasters
-//{
-//    public class Spellcaster : Character
-//    {
-//        private int manaPoints;
+namespace Spellcasters
+{
+    public abstract class Spellcaster : Character
+    {
+        private int manaPoints;
 
-//        public int ManaPoints
-//        {
-//            get { return this.manaPoints; }
-//            set { this.manaPoints = value; }
-//        }
+        public int ManaPoints
+        {
+            get 
+            { 
+                return this.manaPoints; 
+            
+            }
+            set 
+            {
+                if (value >= 0 && value <=100)
+                {
+                    this.manaPoints = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Mana Points must be between 0 - 100");
+                }
+                 
+            }
+        }
 
-//        public Spellcaster()
-//        {
-                
-//        }
-
-//        public Spellcaster(string name, int level, int age, int manaPoints)
-//            :base(name, level, age)
-//        {
-//            this.ManaPoints = manaPoints;
-//        }
-
-//        public override int Addition(int firstNum, int secondNum)
-//        {
-//            int sum = firstNum - secondNum;
-//            return sum;
-//        }
-//    }
-//}
+    }
+}

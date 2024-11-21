@@ -1,42 +1,20 @@
 ﻿
-namespace Blunt
+namespace MagicDestroyers.Weapons.Blunt
 {
-    public class Hammer
+    public class Hammer : Blunt
     {
-        private const int DEFAULT_HAMMER_DAMMAGE = 100;
-        private const string DEFAULT_HAMMER_NAME = "Power Hammer";
+        private const int DEFAULT_WEAPON_DAMMAGE = 10;
 
-        private int damage;
-        private string hammerName;
-
-        public int Damage
+        public Hammer()
+            :this(DEFAULT_WEAPON_DAMMAGE)
         {
-            get
-            {
-                return this.damage;
-            }
-
-            set
-            {
-                this.damage = value;
-            }
+            
         }
-        public string HammerName
-        {
-            get
-            {
-                return this.hammerName;
-            }
 
-            set
-            {
-                this.hammerName = value;
-            }
-        }
-        public Hammer(int damage, string hammerName)
+        public Hammer(int weaponDamage)
         {
-            this.Damage = DEFAULT_HAMMER_DAMMAGE;
-            this.HammerName = DEFAULT_HAMMER_NAME;
+            this.WeaponDamage = weaponDamage;
+  
         }
     }
 }

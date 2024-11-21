@@ -1,15 +1,15 @@
 ﻿using Enumerations;
 using Interfaces;
+using MagicDestroyers.Weapons.Sharp;
 using Melee;
-using Sharp;
 using System;
 
 namespace Common
 {
     public abstract class Character : IAttack, IDefend
     {
-        Faction faction;
-        private Sword swordWeapon;
+        private Faction faction;
+        private Sword weapon;
         private string name;
         private int level, age, healthPoints;
 
@@ -63,7 +63,7 @@ namespace Common
             }
         }
 
-        Faction Factions
+        public Faction Factions
         {
             get
             {
@@ -74,15 +74,15 @@ namespace Common
                 this.faction = value;
             }
         }
-        public Sword SwordWeapons
+        public Sword Sword
         {
             get
             {
-                return this.swordWeapon;
+                return this.weapon;
             }
             set
             {
-                this.swordWeapon = value;
+                this.weapon = value;
             }
         }
 
