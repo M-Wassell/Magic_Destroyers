@@ -1,17 +1,20 @@
 ﻿using Enumerations;
 using Interfaces;
+using MagicDestroyers.Weapons;
 using MagicDestroyers.Weapons.Sharp;
 using Melee;
 using System;
+
 
 namespace Common
 {
     public abstract class Character : IAttack, IDefend
     {
+
         private Faction faction;
-        private Sword weapon;
         private string name;
         private int level, age, healthPoints;
+        private Weapon weapon;
 
         public string Name
         {
@@ -50,13 +53,13 @@ namespace Common
         {
             get
             {
-                return this.level;
+                return this.healthPoints;
             }
             set
             {
                 if (value >=1 || value <=101)
                 {
-                    this.level = value;
+                    this.healthPoints = value;
                 }
                 throw new ArgumentOutOfRangeException(string.Empty, "Health Points need to be between 1 - 100");
 
@@ -74,7 +77,7 @@ namespace Common
                 this.faction = value;
             }
         }
-        public Sword Sword
+        public Weapon Weapon
         {
             get
             {
@@ -103,10 +106,12 @@ namespace Common
         public abstract int Addition(int firstNum, int secondNum);
 
 
-        public abstract void Attack();
+        public abstract int Attack();
 
-        public abstract void SpecialAttack();
+        public abstract int SpecialAttack();
 
-        public abstract void Defend();
+        public abstract int Defend();
+
+        
     }
 }

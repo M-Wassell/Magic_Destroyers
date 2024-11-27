@@ -36,7 +36,7 @@ namespace Melee
         public Knight(string name, int level, int healthPoints) 
         {
             base.Factions = Faction.Melee;
-            this.SwordWeapons = DEFAULT_SWORD_WEAPON;
+            base.Weapon = DEFAULT_SWORD_WEAPON;
             base.Name = name;
             base.Level = level;
             base.HealthPoints = healthPoints;
@@ -48,32 +48,32 @@ namespace Melee
             return sum;
         }
 
-        public void HolyBlow()
+        public int HolyBlow()
         {
-            throw new System.NotImplementedException();
+            return base.Weapon.WeaponDamage + 10;
         }
 
-        public void PurifySoul()
+        public int PurifySoul()
         {
-            throw new System.NotImplementedException();
+            return base.Weapon.WeaponDamage + 10;
         }
-        public void RighteousWings()
+        public int RighteousWings()
         {
-            throw new System.NotImplementedException();
+            throw new System.NotImplementedException(); // Need armour clas 
         }
-        public override void Attack()
+        public override int Attack()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override void SpecialAttack()
-        {
-            throw new System.NotImplementedException();
+            return this.HolyBlow();
         }
 
-        public override void Defend()
+        public override int SpecialAttack()
         {
-            throw new System.NotImplementedException();
+            return this.PurifySoul();
+        }
+
+        public override int Defend()
+        {
+            return this.RighteousWings();
         }
     }
 }

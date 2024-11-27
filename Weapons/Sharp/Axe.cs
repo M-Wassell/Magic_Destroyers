@@ -3,13 +3,10 @@ namespace MagicDestroyers.Weapons.Sharp
 {
     public class Axe : Sharp
     {
-        private const int DEFAULT_AXE_DAMMAGE = 100;
+        private const int DEFAULT_AXE_DAMMAGE = 10;
 
         public Axe()
-            :this(DEFAULT_AXE_DAMMAGE)
-        {
-                
-        }
+            :this(DEFAULT_AXE_DAMMAGE){}
 
         public Axe(int weaponDamage) 
         { 

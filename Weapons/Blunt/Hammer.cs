@@ -6,10 +6,7 @@ namespace MagicDestroyers.Weapons.Blunt
         private const int DEFAULT_WEAPON_DAMMAGE = 10;
 
         public Hammer()
-            :this(DEFAULT_WEAPON_DAMMAGE)
-        {
-            
-        }
+            :this(DEFAULT_WEAPON_DAMMAGE){}
 
         public Hammer(int weaponDamage)
         {

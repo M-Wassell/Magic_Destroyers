@@ -4,6 +4,7 @@ using Enumerations;
 using MagicDestroyers.Weapons.Sharp;
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Melee
 {
@@ -11,25 +12,54 @@ namespace Melee
     {
 
         private readonly Sword DEFAULT_SWORD = new Sword();
+        private const string DEFAULT_NAME = "Uther";
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTH_POINTS = 100;
+
+        private static int idCounter;
+        private readonly int id;
+
+        public int ID 
+        {
+            get 
+            {
+                return this.id;
+            }  
+        }
+
+        public static int IdCount
+        {
+            get
+            {
+                return Warrior.idCounter;
+            }
+            set
+            {
+                Warrior.idCounter = value;
+            }
+        }
 
         public Warrior()
-            : this(Faction.Melee) { }
-
-        public Warrior(Faction faction)
+            :this(DEFAULT_NAME, DEFAULT_LEVEL)
         {
-            base.Sword = DEFAULT_SWORD;
+                
+        }
+        public Warrior(string name, int level)
+            : this(name, level, DEFAULT_HEALTH_POINTS) { }
+
+        public Warrior(string name, int level, int healthPoints)
+        {
+            IdCount++;
+            this.id = idCounter;
+            base.Factions = Faction.Melee;
+            base.Weapon = DEFAULT_SWORD;
+            base.Level = level;
+            base.HealthPoints = healthPoints;
+            base.Name = name;
         }
 
-        public void SwordDamage(string damage)
-        {
-            Console.WriteLine($"damage = {damage}");
-        }
 
-        public virtual void WarriorAttributes()
-        {
-            Console.WriteLine($"I am a mighty Warrior");
-            base.CharacterAttributes();
-        }
+
 
         public override int Addition(int firstNum, int secondNum)
         {
@@ -38,33 +68,33 @@ namespace Melee
             return sum;
         }
 
-        public void Strike()
+        public int Strike()
+        {
+            return base.Weapon.WeaponDamage + 10;
+        }
+
+        public int Execute()
+        {
+            throw new NotImplementedException();
+        }
+        public int SkinHarden()// Armour class required
         {
             throw new NotImplementedException();
         }
 
-        public void Execute()
+        public override int Attack()
         {
-            throw new NotImplementedException();
-        }
-        public void SkinHarden()
-        {
-            throw new NotImplementedException();
+            return this.Strike();
         }
 
-        public override void Attack()
+        public override int SpecialAttack()
         {
-            Strike();
+            return this.Execute();
         }
 
-        public override void SpecialAttack()
+        public override int Defend()
         {
-            Execute();
-        }
-
-        public override void Defend()
-        {
-            SkinHarden();
+            return this.SkinHarden();
         }
     }
 }

@@ -4,8 +4,8 @@ namespace Interfaces
 {
     public interface IAttack
     {
-        void Attack();
+        int Attack();
 
-        void SpecialAttack();
+        int SpecialAttack();
     }
 }

@@ -3,6 +3,7 @@
 using Common;
 using Enumerations;
 using Interfaces;
+using MagicDestroyers.Weapons;
 using MagicDestroyers.Weapons.Blunt;
 using Melee;
 using System;
@@ -12,26 +13,14 @@ namespace Spellcasters
 {
     public class Mage : Spellcaster, ISpellcaster
     {
-        private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
+        private readonly Weapon DEFAULT_STAFF_WEAPON = new MagicStaff();
         private const string DEFAULT_NAME = "Hogwarth";
         private const int DEFAULT_LEVEL = 1;
         private const int DEFAULT_HEALTH_POINTS = 100;
 
-        private MagicStaff magicStaffWeapon;
+
         private Spell mySpell;
         private int mana;
-
-        public MagicStaff MagicStaffWeapon
-        {
-            get
-            {
-                return this.magicStaffWeapon;
-            }
-            set
-            {
-                this.magicStaffWeapon = value;
-            }
-        }
 
         public Spell MySpell
         {
@@ -65,7 +54,7 @@ namespace Spellcasters
             base.Name = name;
             base.Level = level;
             base.HealthPoints = healthPoints;
-            this.MagicStaffWeapon = DEFAULT_STAFF_WEAPON;
+            this.Weapon = DEFAULT_STAFF_WEAPON;
         }
 
         public override int Addition(int firstNum, int secondNum)
@@ -82,34 +71,34 @@ namespace Spellcasters
             this.mana = this.mana - this.mySpell.ManaCost;
         }
 
-        public void ArcaneWrath()
+        public int ArcaneWrath()
         {
-            throw new NotImplementedException();
+            return base.Weapon.WeaponDamage + 10;
         }
 
-        public void Firewall()
+        public int Firewall()
         {
-            throw new NotImplementedException();
+            return base.Weapon.WeaponDamage + 10;
         }
 
-        public void Meditation()
+        public int Meditation()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();// Needs armour class
         }
 
-        public override void Attack()
+        public override int Attack()
         {
-            ArcaneWrath();
+            return this.ArcaneWrath();
         }
 
-        public override void SpecialAttack()
+        public override int SpecialAttack()
         {
-            Firewall();
+            return this.Firewall();
         }
 
-        public override void Defend()
+        public override int Defend()
         {
-            Meditation();
+            return this.Meditation();
         }
     }
 }

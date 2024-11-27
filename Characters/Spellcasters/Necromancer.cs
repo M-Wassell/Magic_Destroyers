@@ -1,10 +1,11 @@
 ﻿
-using Blunt;
+
 using Common;
 using Enumerations;
 using Interfaces;
+using MagicDestroyers.Weapons;
+using MagicDestroyers.Weapons.Blunt;
 using Melee;
-using Sharp;
 using System;
 using Weapons;
 
@@ -13,17 +14,13 @@ namespace Spellcasters
     internal class Necromancer : Character, ISpellcaster
     {
         private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
-        private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
-        private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
-        
-        private const int DEFAULT_SHADOW_RAGE = 50;
-        private const int DEFAULT_VAMPIRE_TOUCH = 60;
-        private const int DEFAULT_BONE_SHIELD = 70;
+        private readonly Weapon DEFAULT_STAFF_WEAPON = new MagicStaff();
 
-        private int shadowRageOffense, vampireTouchOffense, boneShieldDefense;
-        private Faction faction;
+        private const string DEFAULT_NAME = "Boris";
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTH_POINTS = 100;
+
         private HitPoints hitPoints;
-        private MagicStaff magicStaffWeapon;
         private Spell mySpell;
         private int mana;
 
@@ -33,55 +30,8 @@ namespace Spellcasters
             get { return this.hitPoints; }
             set { this.hitPoints = value; }
         }
-        public MagicStaff MagicStaffWeapon
-        {
-            get
-            {
-                return this.magicStaffWeapon;
-            }
-            set
-            {
-                this.magicStaffWeapon = value;
-            }
-        }
-        public Faction Faction
-        {
-            get { return this.faction; }
-            set { this.faction = value; }
-        }
-        public int ShadowRageOffense
-        {
-            get
-            {
-                return this.shadowRageOffense;
-            }
-            set
-            {
-                this.shadowRageOffense = value;
-            }
-        }
-        public int VampireTouchOffense
-        {
-            get
-            {
-                return this.vampireTouchOffense;
-            }
-            set
-            {
-                this.vampireTouchOffense = value;
-            }
-        }
-        public int BoneShieldDefense
-        {
-            get
-            {
-                return this.boneShieldDefense;
-            }
-            set
-            {
-                this.boneShieldDefense = value;
-            }
-        }
+
+
 
         public Spell MySpell
         {
@@ -111,21 +61,25 @@ namespace Spellcasters
             this.MySpell = new Spell();
             this.Mana = 100;
         }
-
-        public Necromancer(string name, int level, int age)
-                : base(name, level, age) { }
         
 
-        public Necromancer(int shadowRageOffense)
-            :this(DEFAULT_SHADOW_RAGE, DEFAULT_VAMPIRE_TOUCH, DEFAULT_BONE_SHIELD) {}
+        public Necromancer(string name)
+            :this(name, DEFAULT_LEVEL) {}
 
-        public Necromancer(int shadowRageOffense, int vampireTouchOffense, int boneShieldDefense) 
+        public Necromancer(string name, int level)
+            :this(name, level, DEFAULT_HEALTH_POINTS)
         {
+            
+        }
+
+        public Necromancer(string name, int level, int hitpoints) 
+        {
+            base.Factions = Faction.Melee;
+            base.Weapon = DEFAULT_STAFF_WEAPON;
+            base.Level = level;
             this.HitPoints = DEFAULT_HIT_POINTS;
-            this.ShadowRageOffense = DEFAULT_SHADOW_RAGE;
-            this.VampireTouchOffense = DEFAULT_VAMPIRE_TOUCH;
-            this.BoneShieldDefense = DEFAULT_BONE_SHIELD;
-            this.MagicStaffWeapon = DEFAULT_STAFF_WEAPON;
+            base.Name = name;
+
         }
 
         public override int Addition(int firstNum, int secondNum)
@@ -135,10 +89,40 @@ namespace Spellcasters
             return sum;
         }
 
-        public void CastSpell(Warrior warrior)
+
+        public void CastSpell(Character character)
         {
-            warrior.Health = warrior.Health - this.mySpell.Damage;
+            character.HealthPoints = character.HealthPoints - this.mySpell.Damage;
             this.mana = this.mana - this.mySpell.ManaCost;
         }
+
+        public int ShadowRage()
+        {
+            return base.Weapon.WeaponDamage + 10;
+        }
+        public int vampireTouch()
+        {
+            return base.Weapon.WeaponDamage + 10;
+        }
+        public int boneShield()
+        {
+            throw new ArgumentOutOfRangeException();// Armour class needed
+        }
+
+        public override int Attack()
+        {
+            return this.ShadowRage();
+        }
+
+        public override int SpecialAttack()
+        {
+            return this.vampireTouch();
+        }
+
+        public override int Defend()
+        {
+            return this.boneShield();
+        }
+
     }
 }

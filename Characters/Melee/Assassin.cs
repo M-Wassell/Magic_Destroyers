@@ -1,22 +1,21 @@
-﻿
+﻿using MagicDestroyers.Weapons;
 using Enumerations;
-using Sharp;
-using System.Diagnostics.CodeAnalysis;
+using System;
+using MagicDestroyers.Weapons.Sharp;
 
 namespace Melee
 {
     public class Assassin : Melee
     {
         
-        private readonly Faction DEFAULT_FACTION = Faction.Melee;
-        private readonly Sword DEFAULT_SWORD_WEAPON = new Sword();
-        private const int DEFAULT_RAZE = 50;
-        private const int DEFAULT_BLEED_TO_DEATH = 60;
-        private const int DEFAULT_SURVIVAL = 70;
 
-        private int razeOffense, bleedToDeathOffense, survival;
+        private readonly Weapon DEFAULT_SWORD_WEAPON = new Sword();
+        private const string DEFAULT_NAME = "Uther";
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTH_POINTS = 100;
+
         private Sword swordWeapon;
-        private Faction faction;
+
 
         public Sword SwordWeapons
         {
@@ -29,66 +28,53 @@ namespace Melee
                 this.swordWeapon = value;
             }
         }
-        public Faction Faction
-        {
-            get { return this.faction; }
-            set { this.faction = value; }
-        }
-        public int RazeOffense 
-        {
-            get 
-            { 
-                return this.razeOffense;
-            }
 
-            set 
-            { 
-                this.razeOffense = value;
-            } 
-        }
-        public int BleedToDeathOffense
-        {
-            get
-            {
-                return this.bleedToDeathOffense;
-            }
-
-            set
-            {
-                this.bleedToDeathOffense = value;
-            }
-        }
-        public int Survival
-        {
-            get
-            {
-                return this.survival;
-            }
-
-            set
-            {
-                this.survival = value;
-            }
-        }
-
-        public Assassin(string name, int level, int age, int health)
-                : base(name, level, age, health) { }
         public Assassin()
-            :this(DEFAULT_RAZE, DEFAULT_BLEED_TO_DEATH) {}
-        public Assassin(int razeOffense, int bleedToDeathOffense)
-            :this(DEFAULT_RAZE, DEFAULT_BLEED_TO_DEATH, DEFAULT_SURVIVAL) {}
-        public Assassin(int razeOffense, int bleedToDeathOffense, int survival)
+            :this(DEFAULT_NAME, DEFAULT_LEVEL) {}
+        public Assassin(string name, int level)
+            :this(name, level, DEFAULT_HEALTH_POINTS) {}
+        public Assassin(string name, int level, int healthPoints)
         {
-            this.RazeOffense = DEFAULT_RAZE;
-            this.BleedToDeathOffense = DEFAULT_BLEED_TO_DEATH;
-            this.Survival = DEFAULT_SURVIVAL;
-            this.SwordWeapons = DEFAULT_SWORD_WEAPON;
+            base.Factions = Faction.Melee;
+            base.Weapon = DEFAULT_SWORD_WEAPON;
+            base.Level = level;
+            base.HealthPoints = healthPoints;
+            base.Name = name;
+
         }
 
         public override int Addition(int firstNum, int secondNum)
         {
             int sum = firstNum + secondNum;
             return sum;
+        }
+
+        public int Raze()
+        {
+            return base.Weapon.WeaponDamage + 10;
+        }
+        public int BleedToDeath()
+        {
+            return base.Weapon.WeaponDamage + 10;
+        }
+        public int Survival()
+        {
+            throw new NotImplementedException(); // needs armour class
+        }
+
+        public override int Attack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override int SpecialAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override int Defend()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

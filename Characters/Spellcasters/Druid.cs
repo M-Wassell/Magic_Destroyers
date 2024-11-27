@@ -1,86 +1,35 @@
 ﻿
-using Blunt;
+using MagicDestroyers.Weapons.Blunt;
 using Common;
 using Enumerations;
 using Interfaces;
 using Melee;
 using System;
-using System.Linq.Expressions;
+
 using Weapons;
+using MagicDestroyers.Weapons;
 
 namespace Spellcasters
 {
     public class Druid : Character, ISpellcaster
     {
         private readonly HitPoints DEFAULT_HIT_POINTS = HitPoints.Health;
-        private readonly Faction DEFAULT_FACTION = Faction.Spellcaster;
-        private readonly MagicStaff DEFAULT_STAFF_WEAPON = new MagicStaff();
-        
-        private const int DEFAULT_MOON_FIRE = 50;
-        private const int DEFAULT_STARBURST = 60;
-        private const int DEFAULT_ONE_WITH_NATURE = 70;
+        private readonly Weapon DEFAULT_STAFF_WEAPON = new MagicStaff();
+        private const string DEFAULT_NAME = "Hardue";
+        private const int DEFAULT_LEVEL = 1;
 
-        private int moonfireOffensive, starburstOffensive, oneWithTheNatureOffensive, mana;
-        private Faction faction;
+        private int mana;
+
         private HitPoints hitPoints;
-        private MagicStaff magicStaffWeapon;
+
         private Spell mySpell;
 
-        
         public HitPoints HitPoints
         {
             get { return this.hitPoints; }
             set { this.hitPoints = value; }
         }
-        public MagicStaff MagicStaffWeapon
-        {
-            get
-            {
-                return this.magicStaffWeapon;
-            }
-            set
-            {
-                this.magicStaffWeapon = value;
-            }
-        }
-        public Faction Faction
-        {
-            get { return this.faction; }
-            set { this.faction = value; }
-        }
-        public int MoonfireOffensive 
-        {
-            get
-            {
-                return this.moonfireOffensive;
-            }
-            set
-            {
-                this.moonfireOffensive = value;
-            } 
-        }
-        public int StarburstOffensive
-        {
-            get
-            {
-                return this.starburstOffensive;
-            }
-            set
-            {
-                this.starburstOffensive = value;
-            }
-        }
-        public int OneWithTheNatureOffensive
-        {
-            get
-            {
-                return this.oneWithTheNatureOffensive;
-            }
-            set
-            {
-                this.oneWithTheNatureOffensive = value;
-            }
-        }
+
         public Spell MySpell
         {
             get
@@ -105,20 +54,22 @@ namespace Spellcasters
         }
 
         public Druid()
+            :this(DEFAULT_NAME)
         {
             this.MySpell = new Spell();
             this.Mana = 100;
         }
 
-        public Druid(int moonfireOffensive)
-            :this(DEFAULT_MOON_FIRE, DEFAULT_STARBURST, DEFAULT_ONE_WITH_NATURE) {}
-        public Druid(int moonfireOffensive, int starburstOffensive, int oneWithTheNatureOffensive)
+        public Druid(string name)
+            :this(name, DEFAULT_LEVEL) {}
+        public Druid(string name, int level)
         {
             this.HitPoints = DEFAULT_HIT_POINTS;
-            this.MoonfireOffensive = DEFAULT_MOON_FIRE;
-            this.StarburstOffensive = DEFAULT_STARBURST;
-            this.OneWithTheNatureOffensive = DEFAULT_ONE_WITH_NATURE;
-            this.MagicStaffWeapon = DEFAULT_STAFF_WEAPON;
+            base.Weapon = DEFAULT_STAFF_WEAPON;
+            base.Level = level;
+            base.Name = name;
+            base.Factions = Faction.Spellcaster;
+
         }
 
         public override int Addition(int firstNum, int secondNum)
@@ -137,19 +88,31 @@ namespace Spellcasters
             this.mana = this.mana - this.mySpell.ManaCost;
         }
 
-        public override void Attack()
+        public int Moonfire()
         {
             throw new NotImplementedException();
         }
-
-        public override void SpecialAttack()
+        public int Starburst()
         {
             throw new NotImplementedException();
         }
-
-        public override void Defend()
+        public int OneWithTheNature()
         {
             throw new NotImplementedException();
+        }
+        public override int Attack()
+        {
+            return this.Moonfire();
+        }
+
+        public override int SpecialAttack()
+        {
+            return this.Starburst();
+        }
+
+        public override int Defend()
+        {
+            return this.OneWithTheNature();
         }
     }
 }
