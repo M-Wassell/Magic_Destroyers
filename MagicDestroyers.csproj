@@ -43,6 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Const.cs" />
+    <Compile Include="Equipment\Armours\Armour.cs" />
+    <Compile Include="Equipment\Armours\Heavy\Chainmail.cs" />
+    <Compile Include="Equipment\Armours\Heavy\Heavy.cs" />
+    <Compile Include="Equipment\Armours\Leather\Leather.cs" />
+    <Compile Include="Equipment\Armours\Leather\LeatherVest.cs" />
+    <Compile Include="Equipment\Armours\Light\ClothRobe.cs" />
+    <Compile Include="Equipment\Armours\Light\Light.cs" />
     <Compile Include="Characters\Melee\Melee.cs" />
     <Compile Include="Characters\Spellcasters\Spellcaster.cs" />
     <Compile Include="Common\Character.cs" />
@@ -54,12 +62,12 @@
     <Compile Include="Interfaces\IDefend.cs" />
     <Compile Include="Interfaces\ISpellcaster.cs" />
     <Compile Include="PlayersInfo.cs" />
-    <Compile Include="Weapons\Blunt\Blunt.cs" />
-    <Compile Include="Weapons\Blunt\Hammer.cs" />
-    <Compile Include="Weapons\Blunt\MagicStaff.cs" />
-    <Compile Include="Weapons\Sharp\Axe.cs" />
-    <Compile Include="Weapons\Sharp\Sharp.cs" />
-    <Compile Include="Weapons\Sharp\Sword.cs" />
+    <Compile Include="Equipment\Weapons\Blunt\Blunt.cs" />
+    <Compile Include="Equipment\Weapons\Blunt\Hammer.cs" />
+    <Compile Include="Equipment\Weapons\Blunt\MagicStaff.cs" />
+    <Compile Include="Equipment\Weapons\Sharp\Axe.cs" />
+    <Compile Include="Equipment\Weapons\Sharp\Sharp.cs" />
+    <Compile Include="Equipment\Weapons\Sharp\Sword.cs" />
     <Compile Include="Characters\Melee\Assassin.cs" />
     <Compile Include="Characters\Melee\Knight.cs" />
     <Compile Include="Characters\Melee\Warrior.cs" />
@@ -68,8 +76,9 @@
     <Compile Include="Characters\Spellcasters\Necromancer.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Weapons\Spell.cs" />
-    <Compile Include="Weapons\Weapon.cs" />
+    <Compile Include="Equipment\Weapons\Spell.cs" />
+    <Compile Include="Equipment\Weapons\Weapon.cs" />
+    <Compile Include="Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

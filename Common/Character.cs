@@ -1,5 +1,6 @@
 ﻿using Enumerations;
 using Interfaces;
+using MagicDestroyers.Armours;
 using MagicDestroyers.Weapons;
 using MagicDestroyers.Weapons.Sharp;
 using Melee;
@@ -15,6 +16,7 @@ namespace Common
         private string name;
         private int level, age, healthPoints;
         private Weapon weapon;
+        private Armour bodyArmour;
 
         public string Name
         {
@@ -87,6 +89,17 @@ namespace Common
             {
                 this.weapon = value;
             }
+        }
+        public Armour BodyArmour 
+        {
+            get
+            { 
+                return this.bodyArmour;
+            }
+            set
+            {
+                this.bodyArmour = value;
+            } 
         }
 
         public void Greeting(string name)

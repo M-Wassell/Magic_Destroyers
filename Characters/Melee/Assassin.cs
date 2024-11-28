@@ -59,17 +59,17 @@ namespace Melee
         }
         public int Survival()
         {
-            throw new NotImplementedException(); // needs armour class
+            return this.BodyArmour.ArmourPoints + 5;
         }
 
         public override int Attack()
         {
-            throw new System.NotImplementedException();
+            return this.Raze();
         }
 
         public override int SpecialAttack()
         {
-            throw new System.NotImplementedException();
+            return this.BleedToDeath();
         }
 
         public override int Defend()

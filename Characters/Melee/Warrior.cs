@@ -75,7 +75,7 @@ namespace Melee
 
         public int Execute()
         {
-            throw new NotImplementedException();
+            return base.Weapon.WeaponDamage + 10;
         }
         public int SkinHarden()// Armour class required
         {
