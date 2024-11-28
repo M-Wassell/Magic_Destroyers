@@ -58,9 +58,6 @@ namespace Melee
             base.Name = name;
         }
 
-
-
-
         public override int Addition(int firstNum, int secondNum)
         {
             int sum = firstNum + secondNum;
@@ -75,11 +72,11 @@ namespace Melee
 
         public int Execute()
         {
-            return base.Weapon.WeaponDamage + 10;
+            return base.Weapon.WeaponDamage + 15;
         }
-        public int SkinHarden()// Armour class required
+        public int SkinHarden()
         {
-            throw new NotImplementedException();
+            return base.BodyArmour.ArmourPoints + 5;
         }
 
         public override int Attack()

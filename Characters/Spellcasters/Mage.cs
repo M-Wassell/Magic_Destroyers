@@ -3,6 +3,7 @@
 using Common;
 using Enumerations;
 using Interfaces;
+using MagicDestroyers.Armours;
 using MagicDestroyers.Weapons;
 using MagicDestroyers.Weapons.Blunt;
 using Melee;
@@ -78,12 +79,12 @@ namespace Spellcasters
 
         public int Firewall()
         {
-            return base.Weapon.WeaponDamage + 10;
+            return base.Weapon.WeaponDamage + 15;
         }
 
         public int Meditation()
         {
-            throw new NotImplementedException();// Needs armour class
+            return BodyArmour.ArmourPoints + 10;
         }
 
         public override int Attack()

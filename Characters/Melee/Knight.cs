@@ -55,11 +55,11 @@ namespace Melee
 
         public int PurifySoul()
         {
-            return base.Weapon.WeaponDamage + 10;
+            return base.Weapon.WeaponDamage + 15;
         }
         public int RighteousWings()
         {
-            throw new System.NotImplementedException(); // Need armour clas 
+            return base.BodyArmour.ArmourPoints + 10;
         }
         public override int Attack()
         {

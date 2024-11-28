@@ -1,5 +1,6 @@
 ﻿using Enumerations;
 using Interfaces;
+using MagicDestroyers;
 using MagicDestroyers.Armours;
 using MagicDestroyers.Weapons;
 using MagicDestroyers.Weapons.Sharp;
@@ -17,6 +18,8 @@ namespace Common
         private int level, age, healthPoints;
         private Weapon weapon;
         private Armour bodyArmour;
+        private int scores;
+        private bool isAlive;
 
         public string Name
         {
@@ -65,6 +68,30 @@ namespace Common
                 }
                 throw new ArgumentOutOfRangeException(string.Empty, "Health Points need to be between 1 - 100");
 
+            }
+        }
+        public bool IsAlive
+        {
+            get
+            {
+                return this.isAlive;
+            }
+
+            protected set
+            {
+                this.isAlive = value;
+            }
+        }
+        public int Scores
+        {
+            get
+            {
+                return this.scores;
+            }
+
+            set
+            {
+                this.scores = value;
             }
         }
 
@@ -125,6 +152,41 @@ namespace Common
 
         public abstract int Defend();
 
-        
+        public void TakeDamage(int damage, string attackerName, string type)
+        {
+            if (this.Defend() < damage)
+            {
+                this.healthPoints = this.healthPoints - damage + this.Defend();
+
+                if (this.healthPoints <= 0)
+                {
+                    this.isAlive = false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Haha! Your damage was not enough to harm me!");
+            }
+
+            if (!this.isAlive)
+            {
+                Tools.CharacterSpecificMessageColour($"{this.name} received {damage} damage from {attackerName}, and is now dead!", type);
+            }
+            else
+            {
+                Tools.CharacterSpecificMessageColour($"{this.name} received {damage} damage from {attackerName}, and now has {this.healthPoints} healthpoints!", type);
+            }
+        }
+
+        public void WonBattle()
+        {
+            this.scores++;
+
+            if (this.scores % 10 == 0)
+            {
+                this.level++;
+            }
+        }
+
     }
 }

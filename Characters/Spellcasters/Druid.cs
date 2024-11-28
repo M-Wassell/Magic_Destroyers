@@ -64,6 +64,7 @@ namespace Spellcasters
             :this(name, DEFAULT_LEVEL) {}
         public Druid(string name, int level)
         {
+            base.Factions = Faction.Spellcaster;
             this.HitPoints = DEFAULT_HIT_POINTS;
             base.Weapon = DEFAULT_STAFF_WEAPON;
             base.Level = level;
@@ -90,15 +91,15 @@ namespace Spellcasters
 
         public int Moonfire()
         {
-            throw new NotImplementedException();
+            return Weapon.WeaponDamage + 10;
         }
         public int Starburst()
         {
-            throw new NotImplementedException();
+            return Weapon.WeaponDamage + 15;
         }
         public int OneWithTheNature()
         {
-            throw new NotImplementedException();
+            return BodyArmour.ArmourPoints + 10;
         }
         public override int Attack()
         {

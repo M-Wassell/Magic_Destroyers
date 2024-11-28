@@ -102,11 +102,11 @@ namespace Spellcasters
         }
         public int vampireTouch()
         {
-            return base.Weapon.WeaponDamage + 10;
+            return base.Weapon.WeaponDamage + 15;
         }
         public int boneShield()
         {
-            throw new ArgumentOutOfRangeException();// Armour class needed
+            return this.BodyArmour.ArmourPoints + 10;
         }
 
         public override int Attack()

@@ -74,7 +74,7 @@ namespace Melee
 
         public override int Defend()
         {
-            throw new System.NotImplementedException();
+            return this.Survival();
         }
     }
 }
