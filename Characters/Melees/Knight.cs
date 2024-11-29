@@ -4,7 +4,7 @@ using Enumerations;
 using MagicDestroyers.Weapons.Sharp;
 
 
-namespace Melee
+namespace Melees
 {
     public class Knight : Melee
     {

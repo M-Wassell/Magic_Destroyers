@@ -3,7 +3,7 @@ using MagicDestroyers.Weapons.Blunt;
 using Common;
 using Enumerations;
 using Interfaces;
-using Melee;
+using Melees;
 using System;
 
 using Weapons;

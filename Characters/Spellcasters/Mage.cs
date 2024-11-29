@@ -6,7 +6,7 @@ using Interfaces;
 using MagicDestroyers.Armours;
 using MagicDestroyers.Weapons;
 using MagicDestroyers.Weapons.Blunt;
-using Melee;
+using Melees;
 using System;
 using Weapons;
 

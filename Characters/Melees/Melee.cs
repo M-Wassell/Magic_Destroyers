@@ -1,7 +1,7 @@
 ﻿using Common;
 using System;
 
-namespace Melee
+namespace Melees
 {
     public abstract class Melee : Character
     {

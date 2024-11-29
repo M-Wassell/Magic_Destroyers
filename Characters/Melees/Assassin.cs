@@ -3,7 +3,7 @@ using Enumerations;
 using System;
 using MagicDestroyers.Weapons.Sharp;
 
-namespace Melee
+namespace Melees
 {
     public class Assassin : Melee
     {

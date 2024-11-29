@@ -6,7 +6,7 @@ using MagicDestroyers.Weapons.Sharp;
 using System;
 using System.Runtime.InteropServices;
 
-namespace Melee
+namespace Melees
 {
     public class Warrior : Melee
     {

@@ -5,7 +5,7 @@ using Enumerations;
 using Interfaces;
 using MagicDestroyers.Weapons;
 using MagicDestroyers.Weapons.Blunt;
-using Melee;
+using Melees;
 using System;
 using Weapons;
 

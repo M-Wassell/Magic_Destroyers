@@ -4,7 +4,7 @@ using MagicDestroyers;
 using MagicDestroyers.Armours;
 using MagicDestroyers.Weapons;
 using MagicDestroyers.Weapons.Sharp;
-using Melee;
+using Melees;
 using System;
 
 
@@ -62,7 +62,7 @@ namespace Common
             }
             set
             {
-                if (value >=1 || value <=101)
+                if (value >=0 && value <=100)
                 {
                     this.healthPoints = value;
                 }
